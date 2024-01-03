@@ -59,11 +59,6 @@ void	args_check(int argc, char **argv)
 	int	i;
 
 	i = 0;
-	if (argc != 3)
-	{
-		ft_printf("Error: invalid number of arguments");
-		exit(EXIT_FAILURE);
-	}
 	if (!ft_isdigit(argv[1][i++]))
 	{
 		ft_printf("Error: invalid PID");
@@ -94,7 +89,12 @@ void	catch_signals(void)
 int	main(int argc, char **argv)
 {
 	pid_t		pid;
-
+	
+	if (argc != 3)
+	{
+		ft_printf("Error: invalid number of arguments");
+		exit(EXIT_FAILURE);
+	}
 	pid = ft_atoi(argv[1]);
 	args_check(argc, argv);
 	catch_signals();
